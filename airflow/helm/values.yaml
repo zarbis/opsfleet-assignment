@@ -1,0 +1,18 @@
+airflow:
+  # Use a proper secret via `webserverSecretKeySecretName` instead
+  webserverSecretKey: StaticSecret
+  ingress:
+    web:
+      enabled: true
+  webserver:
+    defaultUser: #
+      username: admin
+      password: admin
+  dags:
+    gitSync:
+      # Option 3 from README.md
+      enabled: true
+  logs:
+    persistence:
+      enabled: true
+      size: 1Gi

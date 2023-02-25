@@ -1,0 +1,8 @@
+apiVersion: v2
+description: airflow
+name: airflow
+version: "1.0"
+dependencies:
+  - name: airflow
+    repository:  https://airflow.apache.org
+    version: 1.8.0
