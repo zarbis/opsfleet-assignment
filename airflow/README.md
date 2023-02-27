@@ -19,7 +19,7 @@ In k8s context there are two main executor options: `CeleryExecutor` and `Kubern
 
 `KubernetesExecutor` creates separate pods for each work unit. It's suitable for resource-heavy tasks that exceed worker's resources, especially if those tasks come up in bursts.
 
-`CeleryKubernetesExecutor` is designed to be the "best of both worlds" approach that implements two executors and decised which one to use based on task's queue.
+`CeleryKubernetesExecutor` is designed to be the "best of both worlds" approach that implements two executors and decides which one to use based on task's queue.
 
 I would start with Helm chart's default `CeleryExecutor` and adjust based on nature and characteristics of the tasks.
 
@@ -30,7 +30,7 @@ There are 3 ways of delivering DAGs to workers:
 2. syncing them from Git to shared volume
 3. syncing then into local FS of Arflow pods
 
-Option one is a non-starter for obvious reason of utter inconvenience. It requires requires building custom images and delivering them to clusters running Airflow on every change to DAG definitions.
+Option one is a non-starter for obvious reason of utter inconvenience. It requires building custom images and delivering them to clusters running Airflow on every change to DAG definitions.
 
 Option two is the most dilligent on paper, since it reduces amount of wasted work on Git syncs, preventing potential throttling from GitHub and friends. However it requires setting up `ReadWriteMany` type of shared volume, which is it's own sort of hassle.
 
